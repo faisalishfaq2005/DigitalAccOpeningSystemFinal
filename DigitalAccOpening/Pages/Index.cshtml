@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+
+@{
+    
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Your Bank</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/frontpage.css" />
+</head>
+<body>
+    <div class="graphic"></div>
+    <div class="buttons">
+        <h1>Banking for Everyone</h1>
+        <form method="post">
+        <button class="btn" type="submit" asp-page-handler="SA">Start Application</button>
+        </form>
+         <form method="post">
+        <button class="btn" type="submit" asp-page-handler="RA"  >Resume Application</button>
+        </form>
+        <form method="post">
+            <button class="btn" type="submit" asp-page-handler="BO">Back Office</button>
+        </form>
+    </div>
+    <div class="footer">
+        <p>Secure and reliable digital banking at your fingertips.</p>
+    </div>
+</body>
+</html>

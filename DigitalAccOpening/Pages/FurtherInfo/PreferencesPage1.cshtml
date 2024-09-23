@@ -1,0 +1,174 @@
+﻿@page
+@model DigitalAccOpening.Pages.FurtherInfo.PreferencesPage1Model
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Required Documents</title>
+    <link rel="stylesheet" href="~/css/personalInfo.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+    <style>
+        .btn-continue {
+            background-color: #00A650;
+            color: #fff;
+            padding: 20px;
+            font-size: 24px;
+            border: none;
+            border-radius: 5px;
+            width: 60%;
+            cursor: pointer;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li class="@(ViewData["ActivePage"] as string == "PersonalInformation" ? "active" : "")">
+                    <div class="step-icon">1</div>
+
+                    Personal Information
+                </li>
+                <li class="@(ViewData["ActivePage"] as string=="NextOfKin" ? "active" : "")">
+                    <div class="step-icon">2</div>
+                    Next of Kin Information
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "Preferences" ? "active" : "")">
+                    <div class="step-icon">3</div>
+                    references
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "ZakatExemption" ? "active" : "")">
+                    <div class="step-icon">4</div>
+                    Zakat Exemption
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "MailingAddress" ? "active" : "")">
+                    <div class="step-icon">5</div>
+                    Mailing Address
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "UploadDocuments" ? "active" : "")">
+                    <div class="step-icon">6</div>
+                    Upload Documents
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "CaptureImage" ? "active" : "")">
+                    <div class="step-icon">6</div>
+                    Capture Image
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "VerifyEnteredData" ? "active" : "")">
+                    <div class="step-icon">6</div>
+                    Verify Entered Data
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div class="back-button">
+                <a href="#">&#8592; Go Back</a>
+            </div>
+            <div class="profile-image"></div>
+            <h1>Branch Preference</h1>
+            
+            <form method="post">
+                <div class="form-group">
+                    <select name="preferedCity" id="preferedCity">
+
+                        <option value="">Prefered City</option>
+                        <option value="Lahore">Lahore</option>
+                        <option value="Islamabad">Islamabad</option>
+                        <option value="Karachi">Karachi</option>
+                        <option value="Peshawar">Peshawar</option>
+                        <option value="Faislabad">Faislabad</option>
+                        <option value="Sargodha">Sargodha</option>
+                        <option value="Sialkot">Sialkot</option>
+                    </select>
+                    <select name="preferedBranch" id="preferedBranch">
+                        <option value="">Preferred Branch</option>
+                    </select>
+                    
+                    
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Referal Code (optional)" name="referalCode" />
+                  
+                    <button class="btn-continue">Continue</button>
+                   
+                </div>
+
+                
+
+            </form>
+        </div>
+    </div>
+    <script>
+        const branches = {
+            "Lahore": [
+                { value: "BahriaTownBranch", text: "Bahria Town Branch" },
+                { value: "ModelTownBranch", text: "Model Town Branch" },
+                { value: "GardenTownBranch", text: "Garden Town Branch" },
+                { value: "FaisalTownBranch", text: "Faisal Town Branch" }
+            ],
+            "Islamabad": [
+                { value: "BahriaTownBranch", text: "Bahria Town Branch" },
+                { value: "G13Branch", text: "G-13 Branch" },
+                { value: "G11Branch", text: "G-11 Branch" },
+                { value: "BlueAreaBranch", text: "Blue Area Branch" }
+            ],
+            "Karachi": [
+                { value: "BahriaTownBranch", text: "Bahria Town Branch" },
+                { value: "FaisalChowkBranch", text: "Faisal Chowk Branch" },
+                { value: "SadarBranch", text: "Sadar Branch" },
+                { value: "ColonyBranch", text: "Colony Branch" }
+            ],
+            "Peshawar": [
+                { value: "UniversityRoadBranch", text: "University Road Branch" },
+                { value: "HayatabadBranch", text: "Hayatabad Branch" },
+                { value: "SaddarBranch", text: "Saddar Branch" },
+                { value: "CanttBranch", text: "Cantt Branch" }
+            ],
+            "Faisalabad": [
+                { value: "ClockTowerBranch", text: "Clock Tower Branch" },
+                { value: "DGroundBranch", text: "D-Ground Branch" },
+                { value: "SatyanaRoadBranch", text: "Satyana Road Branch" },
+                { value: "PeoplesColonyBranch", text: "Peoples Colony Branch" }
+            ],
+            "Sargodha": [
+                { value: "MainBranch", text: "Main Branch" },
+                { value: "UniversityRoadBranch", text: "University Road Branch" },
+                { value: "SatelliteTownBranch", text: "Satellite Town Branch" },
+                { value: "CanttBranch", text: "Cantt Branch" }
+            ],
+            "Sialkot": [
+                { value: "CantonmentBranch", text: "Cantonment Branch" },
+                { value: "MainBazarBranch", text: "Main Bazar Branch" },
+                { value: "UgokiBranch", text: "Ugoki Branch" },
+                { value: "DefenseRoadBranch", text: "Defense Road Branch" }
+            ]
+        };
+
+        document.getElementById('preferedCity').addEventListener('change', function () {
+            const city = this.value;
+            const branchSelect = document.getElementById('preferedBranch');
+
+            // Clear previous options
+            branchSelect.innerHTML = '<option value="">Preferred Branch</option>';
+
+            if (branches[city]) {
+                branches[city].forEach(branch => {
+                    const option = document.createElement('option');
+                    option.value = branch.value;
+                    option.text = branch.text;
+                    branchSelect.appendChild(option);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

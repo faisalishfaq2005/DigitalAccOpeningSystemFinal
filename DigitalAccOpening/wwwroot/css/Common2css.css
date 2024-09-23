@@ -1,0 +1,113 @@
+﻿body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.go-back {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #2ba84a;
+    display: flex;
+    align-items: center;
+}
+
+    .go-back:hover {
+        background-color: #bbb;
+    }
+
+.main-heading {
+    font-size: 50px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 30px;
+}
+
+.form-control {
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 60%;
+    margin: 0 auto 30px;
+}
+
+.btn-continue {
+    background-color: #00A650;
+    color: #fff;
+    padding: 20px;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    width: 60%;
+    cursor: pointer;
+}
+
+    .btn-continue:hover {
+        background-color: #008F4C;
+    }
+
+.container {
+    
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .card-icon .card {
+        width: 70px;
+        height: 50px;
+        background-color: #4CAF50;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .card-icon .card .chip {
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .card-icon .card .lines {
+            width: 40px;
+            height: 5px;
+            background-color: #fff;
+            margin-top: 5px;
+        }
+
+.dropdown-menu {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+    .dropdown-menu label {
+        margin-left: 5px;
+        font-size: 16px;
+    }

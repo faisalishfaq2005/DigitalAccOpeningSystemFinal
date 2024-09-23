@@ -1,0 +1,166 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.doc-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background-color: #00A651;
+    border-radius: 10px;
+    position: relative;
+}
+
+    .doc-icon::before, .doc-icon::after {
+        content: '';
+        position: absolute;
+        background-color: #fff;
+    }
+
+    .doc-icon::before {
+        top: 20%;
+        left: 25%;
+        width: 50%;
+        height: 10%;
+    }
+
+    .doc-icon::after {
+        top: 40%;
+        left: 25%;
+        width: 50%;
+        height: 10%;
+    }
+
+h1 {
+    font-size: 3vw;
+    font-weight: bold;
+    margin: 20px 0 10px;
+}
+
+.description {
+    font-size: 1.2vw;
+    color: #666;
+}
+
+.documents {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+.document {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 45%;
+    min-width: 300px;
+}
+
+.doc-image {
+    width: 50px;
+    height: 50px;
+    background-color: #E3FCEF;
+    border-radius: 5px;
+    position: relative;
+    margin-right: 15px;
+}
+
+.cnic-icon::before, .signature-icon::before, .income-icon::before {
+    content: '';
+    position: absolute;
+    background-color: #00A651;
+}
+
+.cnic-icon::before {
+    top: 30%;
+    left: 25%;
+    width: 50%;
+    height: 20%;
+    border-radius: 2px;
+}
+
+.signature-icon::before {
+    top: 25%;
+    left: 15%;
+    width: 70%;
+    height: 50%;
+    border-radius: 50%;
+    border: 2px solid #00A651;
+}
+
+.income-icon::before {
+    top: 25%;
+    left: 15%;
+    width: 70%;
+    height: 50%;
+    border-radius: 50%;
+    border: 2px solid #00A651;
+}
+
+.income-icon::after {
+    content: '';
+    position: absolute;
+    top: 65%;
+    left: 25%;
+    width: 50%;
+    height: 10%;
+    background-color: #00A651;
+    border-radius: 2px;
+}
+
+.doc-info h3 {
+    font-size: 1.8vw;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.doc-info p {
+    font-size: 1.2vw;
+    color: #666;
+}
+
+.continue-button {
+    background-color: #00A651;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 2vw;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50%;
+    margin: 0 auto;
+}
+
+    .continue-button:hover {
+        background-color: #008f4a;
+    }

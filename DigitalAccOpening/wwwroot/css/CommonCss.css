@@ -1,0 +1,160 @@
+﻿body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.icon {
+    margin-bottom: 40px;
+}
+
+    .icon img {
+        width: 100px;
+        height: 100px;
+    }
+
+.question {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 60px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+    .btn-group button {
+        padding: 20px 80px;
+        font-size: 24px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+.btn-no {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.btn-yes {
+    background-color: #2ba84a;
+    color: white;
+}
+
+.btn-no:hover {
+    background-color: #d4d4d4;
+}
+
+.btn-yes:hover {
+    background-color: #24943e;
+}
+
+.go-back {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #2ba84a;
+    display: flex;
+    align-items: center;
+}
+
+    .go-back svg {
+        margin-right: 10px;
+    }
+
+    .go-back:hover {
+        text-decoration: underline;
+    }
+
+.form-group {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+}
+
+.dropdown-check-list {
+    display: inline-block;
+    width: 100%;
+}
+
+    .dropdown-check-list .anchor {
+        display: block;
+        background-color: #fff;
+        border: 2px solid #00A650;
+        color: #333;
+        padding: 12px;
+        font-size: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+        position: relative;
+        text-align: left;
+        width: 100%;
+    }
+
+        .dropdown-check-list .anchor:after {
+            content: '\25BC';
+            position: absolute;
+            right: 10px;
+            top: 14px;
+            font-size: 12px;
+        }
+
+    .dropdown-check-list ul.items {
+        padding: 0;
+        display: none;
+        margin: 0;
+        border: 2px solid #00A650;
+        border-top: none;
+        width: 100%;
+        max-height: 300px;
+        overflow-y: auto;
+        background-color: #fff;
+        border-radius: 0 0 5px 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .dropdown-check-list ul.items li {
+            list-style: none;
+            padding: 10px;
+            border-bottom: 1px solid #f4f4f4;
+        }
+
+            .dropdown-check-list ul.items li:last-child {
+                border-bottom: none;
+            }
+
+            .dropdown-check-list ul.items li label {
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            .dropdown-check-list ul.items li input[type="checkbox"] {
+                margin-right: 10px;
+            }
+
+    .dropdown-check-list.visible .anchor {
+        border-bottom: none;
+    }
+
+    .dropdown-check-list.visible ul.items {
+        display: block;
+    }

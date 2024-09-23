@@ -1,0 +1,320 @@
+﻿@page
+@model DigitalAccOpening.Pages.BackOffice.ViewCustomerDataModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Display</title>
+    <link rel="stylesheet" href="~/css/personalInfo.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <style>
+        /* Existing styles */
+        .section {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 40px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .section h2 {
+            color: #00A650;
+            margin-top: 0;
+        }
+
+        .section p {
+            color: #333;
+            margin: 0;
+        }
+
+        .section-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .section + .section {
+            margin-top: 20px;
+        }
+
+
+        .btn-continue {
+            background-color: #00A650;
+            color: #fff;
+            padding: 20px;
+            font-size: 24px;
+            border: none;
+            border-radius: 5px;
+            width: 60%;
+            cursor: pointer;
+        }
+
+
+        .edit-button {
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            padding: 12px 20px;
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+            .edit-button:hover {
+                background-color: #1e8449;
+
+            }
+
+        .update-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+            .update-section input {
+                width: calc(100% - 20px);
+                margin-bottom: 10px;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+        .update-button {
+            padding: 10px 20px;
+            background-color: #00A650;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .update-button:hover {
+                background-color: #027e3b;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <!-- Sidebar content remains unchanged -->
+                <li class="@(ViewData["ActivePage"] as string == "PersonalInformation" ? "active" : "")">
+                    <div class="step-icon">1</div>
+                    Personal Information
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "NextOfKin" ? "active" : "")">
+                    <div class="step-icon">2</div>
+                    Next of Kin Information
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "Preferences" ? "active" : "")">
+                    <div class="step-icon">3</div>
+                    Preferences
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "ZakatExemption" ? "active" : "")">
+                    <div class="step-icon">4</div>
+                    Zakat Exemption
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "UploadDocuments" ? "active" : "")">
+                    <div class="step-icon">5</div>
+                    Upload Documents
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "CaptureImage" ? "active" : "")">
+                    <div class="step-icon">6</div>
+                    Capture Image
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "VerifyEnteredData" ? "active" : "")">
+                    <div class="step-icon">7</div>
+                    Verify Entered Data
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div class="back-button">
+                <a href="#">&#8592; Go Back</a>
+            </div>
+
+            <h1>Data Overview</h1>
+            <p>Here is the summary:</p>
+
+            <!-- Personal Information Section -->
+            <div class="section">
+                <h2>Information</h2>
+                <div class="section-content">
+                    <p><strong>CNIC: </strong> @Model.decryptedCnic</p>
+                    <p><strong>Phone Number: </strong> @Model.PhoneNumber</p>
+                    <p><strong>Email: </strong>@Model.Email</p>
+
+                </div>
+
+            </div>
+
+            <!-- Next of Kin Information Section -->
+            <div class="section">
+                <h2>Further Information</h2>
+                <div class="section-content">
+                    <p><strong>Tax Resident Of Another Country: </strong> @Model.TaxResidentAnotherCountry</p>
+                    <p><strong>Other Nationalities: </strong> @Model.OtherNationalities</p>
+                    <p><strong>Mother Name: </strong> @Model.MotherName</p>
+                    <p><strong>Country of Birth: </strong> @Model.PlaceOfBirth</p>
+                    <p><strong>Are you a USA Resident: </strong> @Model.IsUSAResident</p>
+                    <p><strong>Are you a USA Citizen: </strong> @Model.IsUSACitizen</p>
+                    <p><strong>Do you have any Links to USA: </strong> @Model.IsUSALinks</p>
+                    <p><strong>Do you have a USA Mandate: </strong> @Model.IsUSAMandate</p>
+
+                </div>
+
+            </div>
+
+            <!-- Preferences Section -->
+            <div class="section">
+                <h2>Customer Info</h2>
+                <div class="section-content">
+                    <p><strong>Purpose for Account:</strong> @Model.CustomerPurpose</p>
+                    <p><strong>Occupation:</strong> @Model.CustomerOccupation</p>
+                </div>
+
+            </div>
+
+            <!-- Zakat Exemption Section -->
+            <div class="section">
+                <h2>Account Info</h2>
+                <div class="section-content">
+                    <p><strong>Banking Type: </strong>@Model.BankingType</p>
+                    <p><strong>Account Type: </strong>@Model.AccountType</p>
+                </div>
+            </div>
+
+            <!-- Uploaded Documents Section -->
+            <div class="section">
+                <h2>Personal Infomation</h2>
+                <div class="section-content">
+                    <p><strong>Name: </strong>@Model.name</p>
+                    <p><strong>Father Name: </strong> @Model.fatherName</p>
+                    <p><strong>Date of Birth: </strong> @Model.dob</p>
+                    <p><strong>City Of Birth: </strong> @Model.cityOfBirth</p>
+                    <p><strong>Cnic Date of Issuence: </strong> @Model.cnicIssuenceDate</p>
+                    <p><strong>Cnic Date of Expiry: </strong> @Model.cnicExpiryDate</p>
+                    <p><strong>Gender: </strong>@Model.gender</p>
+                    <p><strong>Marital Status: </strong>@Model.maritalStatus</p>
+                    <p><strong>Relegion: </strong>@Model.religion</p>
+
+                </div>
+                    
+            </div>
+
+
+
+            <div class="section">
+                <h2>Next of Kin Infomation</h2>
+                <div class="section-content">
+                    <p><strong>Kin Name: </strong>@Model.kinName</p>
+                    <p><strong>Kin Cnic No: </strong> @Model.kinCnic</p>
+                    <p><strong>Kin Mobile: </strong> @Model.kinMobile</p>
+                    <p><strong>Kin Relation: </strong> @Model.kinRelation</p>
+
+                </div>
+                   
+            </div>
+
+            <div class="section">
+                <h2>Preferences Information</h2>
+                <div class="section-content">
+                    <p><strong>Prefered City: </strong>@Model.preferedCity</p>
+                    <p><strong>Prefered Branch: </strong> @Model.preferedBranch</p>
+                    @if (@Model.referalCode != null)
+                    {
+                        <p><strong>Referrel Code: </strong> @Model.referalCode</p>
+                    }
+                </div>
+
+
+                    
+            </div>
+
+
+
+            <div class="section">
+                <h2>Financial Information</h2>
+                <div class="section-content">
+                    <p><strong>Monthly Debit Turnover: </strong>@Model.MonthlyDebitTurnover</p>
+                    <p><strong>Monthly Credit Turnover: </strong> @Model.MonthlyCreditTurnover</p>
+                    <p><strong>Expected Mode Of Transaction: </strong> @Model.ExpectedModeOfTransaction</p>
+                    <p>
+                        <strong>Monthly Income in PKR: </strong> @Model.MonthlyIncome
+                    </p>
+
+                </div>
+
+                    
+            </div>
+
+
+
+
+            <div class="section">
+                <h2>Mailing Address Information</h2>
+                <div class="section-content">
+                    <p><strong>Present Country: </strong>@Model.PresentCountry</p>
+                    <p>
+                        <strong>Present Address: </strong> @Model.PresentAddress
+                    </p>
+
+                </div>
+
+
+                   
+            </div>
+
+
+            <div class="section">
+                <h2>Uploaded Documents</h2>
+                <div class="section-content">
+                    <img src="data:image/jpeg;base64,@Model.CNICFront" alt="Cnic Front" style="max-width: 100%;
+                                        max-height: 400px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                    <img src="data:image/jpeg;base64,@Model.CNICBack" alt="Cnic Back" style="max-width: 100%;
+                                        max-height: 400px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                    <img src="data:image/jpeg;base64,@Model.PaySlip" alt="Pay Slip" style="max-width: 100%;
+                                        max-height: 400px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                </div>  
+            </div>
+
+
+
+            <!-- Captured Image Section -->
+            <div class="section">
+                <h2>Captured Image</h2>
+                <div class="section-content">
+                    <img src="data:image/jpeg;base64,@Model.ImageData" alt="Captured Image" style="max-width: 100%;
+                                        max-height: 400px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                 </div>
+            </div>
+            <form method="post">
+                <button type="submit" class="btn-continue">Forward to bank</button>
+            </form>
+        </div>
+
+    </div>
+
+   
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+﻿@page
+@model DigitalAccOpening.Pages.Customer.CnicInfoModel
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residency Confirmation</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Common2css.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+<body>
+    <a href="#" class="go-back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l3.647 3.646a.5.5 0 0 1-.708.708l-4.5-4.5a.5.5 0 0 1 0-.708l4.5-4.5a.5.5 0 1 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z" />
+        </svg>
+        Go Back
+    </a>
+    <div>
+        <div class="container">
+            <div class="card-icon">
+                <div class="card">
+                    <div class="chip"></div>
+                    <div class="lines"></div>
+                </div>
+            </div>
+        <h1 class="main-heading">What is your CNIC number?</h1>
+            <form id="cnicForm" method="post">
+                <input type="text" class="form-control" placeholder="CNIC" name="Cnic" id="cnicInput">
+                <br />
+                <span class="text-danger" id="cnicError" style="display: none;color:red;">Please enter a valid CNIC number.</span>
+                <span class="text-danger" id="emptyError" style="display: none;color:red;">CNIC number cannot be empty.</span>
+                <br />
+                <br />
+                <button class="btn-continue">Continue</button>
+        </form>
+    </div>
+        
+        <script>
+            $(document).ready(function () {
+                function formatCNIC(value) {
+                    // Remove non-digit characters
+                    value = value.replace(/\D/g, '');
+
+                    // Insert hyphens
+                    if (value.length > 12) {
+                        value = value.slice(0, 5) + '-' + value.slice(5, 12) + '-' + value.slice(12, 13);
+                    } else if (value.length > 7) {
+                        value = value.slice(0, 5) + '-' + value.slice(5, 12);
+                    } else if (value.length > 5) {
+                        value = value.slice(0, 5) + '-' + value.slice(5);
+                    }
+
+                    return value;
+                }
+
+                $('#cnicInput').on('input', function () {
+                    var currentValue = $(this).val();
+                    var formattedValue = formatCNIC(currentValue);
+                    $(this).val(formattedValue);
+                });
+
+                $('#cnicForm').on('submit', function (e) {
+                    var cnic = $('#cnicInput').val().trim();
+                    var cnicPattern = /^[0-9]{5}-[0-9]{7}-[0-9]$/;
+
+                    // Check if the input is empty
+                    if (cnic === "") {
+                        e.preventDefault(); // Prevent form submission
+                        $('#emptyError').show(); // Show empty field error
+                        $('#cnicError').hide(); // Hide CNIC format error
+                    }
+                    // Check if the CNIC is in the correct format
+                    else if (!cnicPattern.test(cnic)) {
+                        e.preventDefault(); // Prevent form submission
+                        $('#emptyError').hide(); // Hide empty field error
+                        $('#cnicError').show(); // Show CNIC format error
+                    }
+                    // If CNIC is valid
+                    else {
+                        $('#emptyError').hide(); // Hide all errors
+                        $('#cnicError').hide();
+                    }
+                });
+            });
+           
+        </script>
+        <script type="text/javascript">
+            @if (!string.IsNullOrEmpty(Model.message))
+            {
+                <text>
+                        alert('@Model.message');
+                        window.location.href = '@Url.Page("/Index")';
+                </text>
+            }
+        </script>
+</body>
+</html>
+
+

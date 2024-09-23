@@ -1,0 +1,61 @@
+﻿@page
+@model DigitalAccOpening.Pages.Customer.FrontPageModel
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <style>
+        body {
+            background-image: none; /* Change to your image path */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #0A0F14;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #0A0F14; /* Optional: Add a semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .proceed-btn {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .proceed-btn:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Digital Account Opening System</h1>
+        <form method="post">
+            <button type="submit" class="proceed-btn">Proceed</button>
+        </form>
+    </div>
+</body>
+</html>

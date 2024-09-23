@@ -1,0 +1,88 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #0A0F14, #1F2833);
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: #66FCF1;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+    padding: 15px 40px;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #0A0F14;
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+}
+
+    .btn:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 0;
+        top: 0;
+        left: 0;
+        background-color: #FFD700;
+        z-index: -1;
+        transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        color: #0A0F14;
+    }
+
+        .btn:hover:before {
+            height: 100%;
+        }
+
+.graphic {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url('https://www.transparenttextures.com/patterns/diagmonds-light.png');
+    opacity: 0.1;
+}
+
+.footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #66FCF1;
+    font-size: 0.9em;
+}

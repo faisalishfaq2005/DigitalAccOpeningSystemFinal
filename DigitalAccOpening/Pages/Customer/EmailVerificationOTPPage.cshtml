@@ -1,0 +1,80 @@
+﻿@page
+@model DigitalAccOpening.Pages.Customer.EmailVerificationOTPPageModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Email Verification";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residency Confirmation</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/AuthenticationPage.css" />
+    <link rel="stylesheet" href="~/css/messagebox.css"/>
+
+</head>
+<body>
+
+    <div class="verification-container">
+        <div class="verification-box">
+            <div class="logo-container">
+                <div class="circle">
+                    <div class="phone">
+                        <div class="phone-notch"></div>
+                        <div class="lock-icon"></div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="main-heading">Email Verification</h1>
+            <h2>Please enter the one-time passcode which was sent to your email address @Model.Gmail</h2>
+            <form method="post">
+                @if (!ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        @foreach (var modelError in ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <p>@modelError.ErrorMessage</p>
+                        }
+                    </div>
+                }
+                <div class="otp-inputs">
+                    <input type="text" maxlength="1" id="otp1" name="OtpInput" oninput="moveToNext(this, 'otp2')" onkeydown="moveToPrev(this, event)" />
+                    <input type="text" maxlength="1" id="otp2" name="OtpInput" oninput="moveToNext(this, 'otp3')" onkeydown="moveToPrev(this, event)" />
+                    <input type="text" maxlength="1" id="otp3" name="OtpInput" oninput="moveToNext(this, 'otp4')" onkeydown="moveToPrev(this, event)" />
+                    <input type="text" maxlength="1" id="otp4" name="OtpInput" oninput="moveToNext(this, 'otp5')" onkeydown="moveToPrev(this, event)" />
+                    <input type="text" maxlength="1" id="otp5" name="OtpInput" oninput="moveToNext(this, 'otp6')" onkeydown="moveToPrev(this, event)" />
+                    <input type="text" maxlength="1" id="otp6" name="OtpInput" oninput="moveToNext(this, null)" onkeydown="moveToPrev(this, event)" />
+                </div>
+
+                <button type="submit" class="verify-button">Verify</button>
+            
+
+            <div class="resend-container">
+                    <button type="submit" class="verify-button" name="resendOtp">Resend OTP</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function moveToNext(current, nextFieldID) {
+            if (current.value.length === 1 && nextFieldID) {
+                document.getElementById(nextFieldID).focus();
+            }
+        }
+
+        function moveToPrev(current, event) {
+            if (event.key === 'Backspace' && current.value.length === 0) {
+                let prevInput = current.previousElementSibling;
+                if (prevInput) {
+                    prevInput.focus();
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

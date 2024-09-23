@@ -1,0 +1,204 @@
+﻿body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    
+    
+    
+}
+
+.sidebar {
+    background-color: #121c2d;
+    width: 25%;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Align contents to the left */
+    position:fixed; /* Keep the sidebar fixed */
+    height: 100vh; /* Ensure it takes the full viewport height */
+   
+}
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        width: 100%;
+    }
+
+        .sidebar ul li {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            font-size: 20px;
+            margin-bottom: 15px;
+            background-color: #1c2738;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+            .sidebar ul li.active {
+                background-color: #27ae60;
+            }
+
+            .sidebar ul li:hover {
+                background-color: #2c3e50;
+                transform: scale(1.05);
+            }
+
+.step-icon {
+    background-color: #2c2f3f;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.sidebar ul li.active .step-icon {
+    background-color: #1e8449;
+}
+
+.sidebar ul li:hover .step-icon {
+    background-color: #34495e;
+    transform: rotate(360deg);
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.step-icon {
+    background-color: #2c2f3f;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.sidebar ul li.active .step-icon {
+    background-color: #1e8449;
+}
+
+.sidebar ul li:hover .step-icon {
+    background-color: #34495e;
+    transform: rotate(360deg);
+}
+
+.content {
+    width: 75%;
+    padding: 40px;
+    background-color: #f8f9fa;
+    overflow-y:auto;
+    margin-left:28%;
+}
+
+.back-button {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+    .back-button a {
+        color: #27ae60;
+        text-decoration: none;
+    }
+
+.btn-continue {
+    background-color: #00A650;
+    color: #fff;
+    padding: 20px;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    width: 60%;
+    cursor: pointer;
+}
+
+.profile-image {
+    background-color: #27ae60;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+p {
+    color: #707070;
+    margin-bottom: 40px;
+}
+
+form .form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    
+}
+
+    form .form-group input,
+    form .form-group select {
+        font-size: 24px;
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid #121c2d;
+        width: 50%;
+        margin: 0 auto 30px;
+        margin-right: 10px; /* Add margin-right to create space */
+    }
+
+        /* Remove extra margin from the last input/select in each group */
+        form .form-group input:last-child,
+        form .form-group select:last-child {
+            margin-right: 0;
+        }
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar, .content {
+        width: 100%;
+    }
+
+    form .form-group {
+        flex-direction: column;
+        
+    }
+    
+        form .form-group input,
+        form .form-group select {
+            width: 100%;
+        }
+}
+
+
+
+
+

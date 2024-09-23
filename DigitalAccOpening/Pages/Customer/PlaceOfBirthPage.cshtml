@@ -1,0 +1,88 @@
+﻿@page
+@model DigitalAccOpening.Pages.Customer.PlaceOfBirthPageModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residency Confirmation</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Common2css.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/Radiobuttonslist.css" />
+</head>
+<body>
+    <a href="#" class="go-back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l3.647 3.646a.5.5 0 0 1-.708.708l-4.5-4.5a.5.5 0 0 1 0-.708l4.5-4.5a.5.5 0 1 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z" />
+        </svg>
+        Go Back
+    </a>
+    <div>
+        <div class="container">
+            <div class="card-icon">
+                <div class="card">
+                    <div class="chip"></div>
+                    <div class="lines"></div>
+                </div>
+            </div>
+            <h1 class="main-heading">Place of Birth?</h1>
+            <form method="post">
+            <div id="country" class="dropdown-check-list">
+                <span class="anchor">Select a Country</span>
+                <ul class="items">
+                    <li><label><input type="radio" name="country" value="China"> China</label></li>
+                    <li><label><input type="radio" name="country" value="India"> India</label></li>
+                    <li><label><input type="radio" name="country" value="United States"> United States</label></li>
+                    <li><label><input type="radio" name="country" value="Indonesia"> Indonesia</label></li>
+                    <li><label><input type="radio" name="country" value="Pakistan"> Pakistan</label></li>
+                    <li><label><input type="radio" name="country" value="Brazil"> Brazil</label></li>
+                    <li><label><input type="radio" name="country" value="Nigeria"> Nigeria</label></li>
+                    <li><label><input type="radio" name="country" value="Bangladesh"> Bangladesh</label></li>
+                    <li><label><input type="radio" name="country" value="Russia"> Russia</label></li>
+                    <li><label><input type="radio" name="country" value="Mexico"> Mexico</label></li>
+                    <li><label><input type="radio" name="country" value="Japan"> Japan</label></li>
+                    <li><label><input type="radio" name="country" value="Ethiopia"> Ethiopia</label></li>
+                    <li><label><input type="radio" name="country" value="Philippines"> Philippines</label></li>
+                    <li><label><input type="radio" name="country" value="Egypt"> Egypt</label></li>
+                    <li><label><input type="radio" name="country" value="Vietnam"> Vietnam</label></li>
+                    <li><label><input type="radio" name="country" value="DR Congo"> DR Congo</label></li>
+                    <li><label><input type="radio" name="country" value="Turkey"> Turkey</label></li>
+                    <li><label><input type="radio" name="country" value="Iran"> Iran</label></li>
+                    <li><label><input type="radio" name="country" value="Germany"> Germany</label></li>
+                    <li><label><input type="radio" name="country" value="Thailand"> Thailand</label></li>
+                    <li><label><input type="radio" name="country" value="United Kingdom"> United Kingdom</label></li>
+                    <li><label><input type="radio" name="country" value="France"> France</label></li>
+                    <li><label><input type="radio" name="country" value="Italy"> Italy</label></li>
+                    <li><label><input type="radio" name="country" value="South Africa"> South Africa</label></li>
+                    <li><label><input type="radio" name="country" value="Tanzania"> Tanzania</label></li>
+                    <li><label><input type="radio" name="country" value="Myanmar"> Myanmar</label></li>
+                    <li><label><input type="radio" name="country" value="South Korea"> South Korea</label></li>
+                    <!-- Add more countries as needed -->
+                </ul>
+            </div>
+
+           
+                <button class="btn-continue">Continue</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.dropdown-check-list .anchor').addEventListener('click', function () {
+            this.parentElement.classList.toggle('visible');
+        });
+
+        document.querySelectorAll('.dropdown-check-list .items li input[type="radio"]').forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                var selectedCountry = this.parentElement.textContent.trim();
+                document.querySelector('.dropdown-check-list .anchor').textContent = selectedCountry;
+                document.querySelector('.dropdown-check-list').classList.remove('visible');
+            });
+        });
+    </script>
+</body>
+</html>
+

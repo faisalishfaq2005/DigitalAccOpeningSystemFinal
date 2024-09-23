@@ -1,0 +1,140 @@
+﻿@page
+@model DigitalAccOpening.Pages.FurtherInfo.PersonalInfoPageModel
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Required Documents</title>
+    <link rel="stylesheet" href="~/css/personalInfo.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+    <style>
+        .btn-continue {
+            background-color: #00A650;
+            color: #fff;
+            padding: 20px;
+            font-size: 24px;
+            border: none;
+            border-radius: 5px;
+            width: 60%;
+            cursor: pointer;
+            text-align: center;
+           
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li class="@(ViewData["ActivePage"] as string == "PersonalInformation" ? "active" : "")">
+                    <div class="step-icon">1</div>
+                   
+                   Personal Information
+                </li>
+                <li
+                    class="@(ViewData["ActivePage"] as string=="NextOfKin" ? "active" : "")">
+                    <div class="step-icon">2</div>
+                    Next of Kin Information
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "Preferences" ? "active" : "")">
+                    <div class="step-icon">3</div>
+                    Preferences
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "ZakatExemption" ? "active" : "")">
+                    <div class="step-icon">4</div>
+                    Zakat Exemption
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "MailingAddress" ? "active" : "")">
+                    <div class="step-icon">5</div>
+                    Mailing Address
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "UploadDocuments" ? "active" : "")">
+                    <div class="step-icon">6</div>
+                    Upload Documents
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "CaptureImage" ? "active" : "")">
+                    <div class="step-icon">6</div>
+                    Capture Image
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "VerifyEnteredData" ? "active" : "")">
+                    <div class="step-icon">6</div>
+                    Verify Entered Data
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div class="back-button">
+                <a href="#">&#8592; Go Back</a>
+            </div>
+            <div class="profile-image"></div>
+            <h1>Personal Information</h1>
+            <h5>Please fill in the required information below.</h5>
+
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" name="name"/>
+                    <input type="text" placeholder="Father's/Husband's Name" name="fatherName"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Date of Birth" id="datepicker" name="dob" />
+                    
+                    <input type="text" placeholder="City/Place of Birth" name="placeOfBirth" />
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="CNIC Date of Issuance" id="cnic_issuance" name="cnicIssuenceDate"/>
+                    <input type="text" placeholder="CNIC Date of Expiry" id="cnic_expiry" name="cnicExpiryDate" />
+                </div>
+                <div class="form-group">
+                    <select name="gender">
+                        <option value="">Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+
+                    <select name="maritalStatus">
+                        <option value="">Marital Status</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="religion">
+                        <option>Religion</option>
+                        <option value="Islam">Islam</option>
+                        <option value="Other">Other</option>
+
+                    </select>
+                </div>
+                
+                    <button class="btn-continue">Continue</button>
+                
+                
+            </form>
+        </div>
+    </div>
+    <script>
+        // Initialize the datepicker
+        $(function () {
+            $("#datepicker").datepicker({
+                dateFormat: 'mm/dd/yy' // or any format you prefer
+            });
+            $("#cnic_issuance").datepicker({
+                dateFormat: 'mm/dd/yy'
+            });
+            $("#cnic_expiry").datepicker({
+                dateFormat:'mm/dd/yy'
+            })
+        });
+        
+    </script>
+</body>
+</html>

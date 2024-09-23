@@ -1,0 +1,71 @@
+﻿@page
+@model DigitalAccOpening.Pages.FurtherInfo.LastPageModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residency Confirmation</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/AuthenticationPage.css" />
+    <link rel="stylesheet" href="~/css/messagebox.css" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: green;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 5px solid #ffffff; /* White border for contrast */
+        }
+
+        .tick {
+            font-size: 50px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Adds depth to the tick */
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="verification-container">
+        <div class="verification-box">
+            <div class="circle">
+                <div class="tick">&#10003;</div>
+            </div>
+            <h1 class="main-heading">ABC Bank</h1>
+            <h1 class="main-heading">Application Completed!!</h1>
+
+            <h2>Thank you for completing digital account opening application successfully. Please note down and save your application tracking id for further correspodence</h2>
+            <br />
+            <h1 class="main-heading">Application Tracking ID: @Model.customerID</h1>
+            <br />
+                <button type="submit" class="verify-button">Go to Home Page</button>
+
+
+                
+        </div>
+    </div>
+    
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿@page
+@model DigitalAccOpening.Pages.Customer.SourceOfFundsPageModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residency Confirmation</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Common2css.css" />
+    <link rel="stylesheet" href="~/css/CheckboxPages.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+
+    </style>
+</head>
+<body>
+    <a href="#" class="go-back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l3.647 3.646a.5.5 0 0 1-.708.708l-4.5-4.5a.5.5 0 0 1 0-.708l4.5-4.5a.5.5 0 1 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z" />
+        </svg>
+        Go Back
+    </a>
+    <div>
+        <div class="container">
+            <div class="card-icon">
+                <div class="card">
+                    <div class="chip"></div>
+                    <div class="lines"></div>
+                </div>
+            </div>
+            <h1 class="main-heading">Specify your source of funds/income</h1>
+            <h4>You may select multiple if you have multiple sources of fund/income for the transactions carried out through this account</h4>
+            <br />
+            <form method="post">
+                <div id="sourceoffunds" class="dropdown-check-list">
+                    <span class="anchor">Income/Source Of Funds</span>
+                    <ul class="items">
+                        <li><label><input type="checkbox" name="SelectedSources" value="BusinessIncome"> Business Income</label></li>
+                       @foreach(var source in Model.SourceOfFunds)
+                        {
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="SelectedSources" value="@source.SourceOfFundsName" />
+                                    @source.SourceOfFundsName
+                                </label>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+
+                <button class="btn-continue">Continue</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Toggle dropdown visibility
+        document.querySelector('.dropdown-check-list .anchor').addEventListener('click', function () {
+            this.parentNode.classList.toggle('visible');
+        });
+
+        // Update selected countries in the dropdown anchor
+        const checkboxes = document.querySelectorAll('.dropdown-check-list .items input[type="checkbox"]');
+        const anchor = document.querySelector('.dropdown-check-list .anchor');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                const selected = [];
+                checkboxes.forEach(box => {
+                    if (box.checked) {
+                        selected.push(box.value);
+                    }
+                });
+                anchor.textContent = selected.length > 0 ? selected.join(', ') : 'Select Countries';
+            });
+        });
+    </script>
+</body>
+</html>

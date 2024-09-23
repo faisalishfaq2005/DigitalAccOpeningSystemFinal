@@ -1,0 +1,56 @@
+﻿@page
+@model DigitalAccOpening.Pages.Customer.testModel
+@{
+}
+
+<br />
+<h2>Account Opening Information</h2>
+
+<form method="post">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Cnic</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="cnic" value="@Model.StartingInfo.getCnic()" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Phone Number</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="phoneNumber" value="@Model.StartingInfo.getPhoneNum()" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Gmail</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="gmail" value="@Model.StartingInfo.getEmail()" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">PakistaniNational</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="pakistaniNational" value="@Model.StartingInfo.getPakistaniNational()" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">MotherName</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="motherName" value="@Model.StartingInfo.getMotherName()" />
+        </div>
+    </div>
+
+    
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">TypeOfBanking</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="typeOfBanking" value="@Model.StartingInfo.getTypeOfBanking()" />
+        </div>
+    </div>
+
+   
+
+</form>

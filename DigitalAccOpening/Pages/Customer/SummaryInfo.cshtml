@@ -1,0 +1,53 @@
+﻿@page
+@model DigitalAccOpening.Pages.Customer.SummaryModel
+@{
+}
+
+<br />
+<h1>Summary</h1>
+<br />
+<br />
+<div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Gmail</label>
+    <div class="col-sm-6">
+        <p>@Model.Gmail</p>
+    </div>
+</div>
+<div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Cnic</label>
+    <div class="col-sm-6">
+        <p>@Model.Cnic</p>
+    </div>
+</div>
+<div class="row mb-3">
+    <label class="col-sm-3 col-form-label">PhoneNumber</label>
+    <div class="col-sm-6">
+        <p>@Model.PhoneNumber</p>
+    </div>
+</div>
+<div class="row mb-3">
+    <label class="col-sm-3 col-form-label">MotherName</label>
+    <div class="col-sm-6">
+        <p>@Model.MotherName</p>
+    </div>
+</div>
+<div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Pakistani National</label>
+    <div class="col-sm-6">
+        <p>@Model.PakistaniNational</p>
+    </div>
+</div>
+<div class="row mb-3">
+    <label class="col-sm-3 col-form-label">TypeOfBanking</label>
+    <div class="col-sm-6">
+        <p>@Model.TypeOfBanking</p>
+    </div>
+</div>
+
+<form method="post">
+    <div class="row mb-3">
+        <div class="col-sm-9 text-right">
+            <button type="submit" class="custom-button">Save</button>
+        </div>
+    </div>
+</form>

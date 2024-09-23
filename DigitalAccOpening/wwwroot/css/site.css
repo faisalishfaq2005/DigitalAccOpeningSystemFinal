@@ -1,0 +1,47 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+/* Navbar default styles */
+.custom-navbar {
+    background-color: black !important;
+    transition: background-color 0.3s ease;
+}
+
+    /* Navbar hover styles */
+    .custom-navbar:hover {
+        background-color: #f8f9fa !important; /* Off-white background on hover */
+    }
+
+    /* Text default styles */
+    .custom-navbar .navbar-brand,
+    .custom-navbar .nav-link {
+        color: white !important;
+        font-weight: normal !important;
+        transition: color 0.3s ease, font-weight 0.3s ease;
+    }
+
+    /* Text hover styles */
+    .custom-navbar:hover .navbar-brand,
+    .custom-navbar:hover .nav-link {
+        color: black !important; /* Black text on hover */
+        font-weight: bold !important;
+    }

@@ -1,0 +1,67 @@
+﻿@page
+@model DigitalAccOpening.Pages.Customer.EmployementDetailsModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residency Confirmation</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Common2css.css" />
+    <link rel="stylesheet" href="/css/Radiobuttonslist.css" />
+
+</head>
+<body>
+    <a href="#" class="go-back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l3.647 3.646a.5.5 0 0 1-.708.708l-4.5-4.5a.5.5 0 0 1 0-.708l4.5-4.5a.5.5 0 1 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z" />
+        </svg>
+        Go Back
+    </a>
+    <div>
+        <div class="container">
+            <div class="card-icon">
+                <div class="card">
+                    <div class="chip"></div>
+                    <div class="lines"></div>
+                </div>
+            </div>
+            <h1 class="main-heading">Current Employement Details?</h1>
+            <h4>Provide information about your employment and organization.</h4>
+            <form method="post">
+                <input type="text" class="form-control" placeholder="Employer/Department Name" name="employername">
+                <input type="text" class="form-control" placeholder="Designation" name="designation">
+                <input type="text" class="form-control" placeholder="Number of Years Employement" name="employementyears">
+                <div id="employementsector" class="dropdown-check-list">
+                    <span class="anchor">Basic Pay Scale</span>
+                    <ul class="items">
+                        <li><label><input type="radio" name="basicpayscale" value="Below16"> BPS 16 & Below</label></li>
+                        <li><label><input type="radio" name="basicpayscale" value="17to20">BPS 17-20</label></li>
+                        <li><label><input type="radio" name="basicpayscale" value="21Above">BPS 21 & Above</label></li>
+                        
+                    </ul>
+                </div>
+
+                <button class="btn-continue">Continue</button>
+            </form>
+        </div>
+        <script>
+            document.querySelector('.dropdown-check-list .anchor').addEventListener('click', function () {
+                this.parentElement.classList.toggle('visible');
+            });
+
+            document.querySelectorAll('.dropdown-check-list .items li input[type="radio"]').forEach(function (radio) {
+                radio.addEventListener('change', function () {
+                    var selectedCountry = this.parentElement.textContent.trim();
+                    document.querySelector('.dropdown-check-list .anchor').textContent = selectedCountry;
+                    document.querySelector('.dropdown-check-list').classList.remove('visible');
+                });
+            });
+        </script>
+</body>
+</html>
+
+

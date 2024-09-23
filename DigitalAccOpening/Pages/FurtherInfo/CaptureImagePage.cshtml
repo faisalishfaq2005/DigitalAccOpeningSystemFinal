@@ -1,0 +1,232 @@
+﻿@page
+@model DigitalAccOpening.Pages.FurtherInfo.CaptureImagePageModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Required Documents</title>
+    <link rel="stylesheet" href="~/css/personalInfo.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        
+        .content {
+            flex-grow: 1;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .content h1 {
+            color: #333;
+        }
+
+        .back-button a {
+            color: #00A650;
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        /* Flex Container for Webcam and Captured Image */
+        .capture-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .capture-area {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            background-color: #e9f7ef;
+            border: 2px dashed #00A650;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        #capture {
+            background-color: #00A650;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #capture:hover {
+            background-color: #008f43;
+        }
+
+        .captured-image-container {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        #capturedImage {
+            display: none;
+            max-width: 100%;
+            height: auto;
+            border: 5px solid #00A650;
+            border-radius: 10px;
+        }
+
+        .btn-continue {
+            background-color: #00A650;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin: 20px auto 0;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-continue:hover {
+            background-color: #008f43;
+        }
+
+        @@media (max-width: 768px) {
+            .capture-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .capture-area, .captured-image-container {
+                min-width: 100%;
+            }
+        }
+    </style>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li class="@(ViewData["ActivePage"] as string == "PersonalInformation" ? "active" : "")">
+                    <div class="step-icon">1</div>
+                    Personal Information
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "NextOfKin" ? "active" : "")">
+                    <div class="step-icon">2</div>
+                    Next of Kin Information
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "Preferences" ? "active" : "")">
+                    <div class="step-icon">3</div>
+                    Preferences
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "ZakatExemption" ? "active" : "")">
+                    <div class="step-icon">4</div>
+                    Zakat Exemption
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "UploadDocuments" ? "active" : "")">
+                    <div class="step-icon">5</div>
+                    Upload Documents
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "CaptureImage" ? "active" : "")">
+                    <div class="step-icon">6</div>
+                    Capture Image
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "VerifyEnteredData" ? "active" : "")">
+                    <div class="step-icon">6</div>
+                    Verify Entered Data
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="back-button">
+                <a href="#">&#8592; Go Back</a>
+            </div>
+
+            <h1>Financial Information</h1>
+            <h5>An expected monthly aggregated Inflow and Outflow from your account</h5>
+
+            <form method="post" enctype="multipart/form-data">
+                <!-- Flex Container for Webcam and Captured Image -->
+                <div class="form-group capture-container">
+                    <div class="capture-area">
+                        <h3>Capture Your Image</h3>
+                        <video id="video" width="320" height="240" autoplay></video>
+                        <div class="controls">
+                            <button type="button" id="capture">Capture</button>
+                        </div>
+                        <canvas id="canvas" width="320" height="240" style="display: none;"></canvas>
+
+                        <input type="hidden" id="imageData" name="imageData" />
+                    </div>
+
+                    <div class="captured-image-container">
+                        <h3>Captured Image</h3>
+                        <img id="capturedImage" alt="Captured Image" />
+                    </div>
+                </div>
+
+                <button class="btn-continue" type="submit">Continue</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Access the webcam
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const captureButton = document.getElementById('capture');
+        const capturedImage = document.getElementById('capturedImage');
+        const imageDataInput = document.getElementById('imageData');
+
+        // Ask for access to the user's webcam
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream;
+            })
+            .catch(function (err) {
+                console.log("Error accessing the webcam: " + err);
+            });
+
+        // Capture the image
+        captureButton.addEventListener('click', function () {
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageDataURL = canvas.toDataURL('image/png'); // Get the image data in Base64
+            capturedImage.src = imageDataURL;
+            capturedImage.style.display = 'block';
+            imageDataInput.value = imageDataURL; // Store the image data in a hidden input field
+        });
+    </script>
+</body>
+
+</html>

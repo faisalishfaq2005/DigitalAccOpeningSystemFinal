@@ -1,0 +1,52 @@
+﻿@page
+@model DigitalAccOpening.Pages.FurtherInfo.RequiredDocumentsPageModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Required Documents</title>
+    <link rel="stylesheet" href="~/css/RequiredDocumentsPage.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="doc-icon"></div>
+            <h1>Required Documents</h1>
+            <p class="description">
+                You shall be asked to upload the following documents at the end. Please ensure you have the specified documents available to complete the application submission.
+            </p>
+        </div>
+        <div class="documents">
+            <div class="document">
+                <div class="doc-image cnic-icon"></div>
+                <div class="doc-info">
+                    <h3>Original CNIC</h3>
+                    <p>Keep the original CNIC with you</p>
+                </div>
+            </div>
+            <div class="document">
+                <div class="doc-image signature-icon"></div>
+                <div class="doc-info">
+                    <h3>Image of Signature</h3>
+                    <p>Use a plain white paper to capture your signature</p>
+                </div>
+            </div>
+            <div class="document">
+                <div class="doc-image income-icon"></div>
+                <div class="doc-info">
+                    <h3>Proof of Income</h3>
+                    <p>Keep a proof with you such as your salary slip</p>
+                </div>
+            </div>
+        </div>
+        <form method="post">
+        <button class="continue-button">Continue</button>
+            </form>
+    </div>
+</body>
+</html>

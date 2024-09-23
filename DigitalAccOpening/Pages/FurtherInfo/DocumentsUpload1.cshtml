@@ -1,0 +1,202 @@
+﻿@page
+@model DigitalAccOpening.Pages.FurtherInfo.DocumentsUpload1Model
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Required Documents</title>
+    <link rel="stylesheet" href="~/css/personalInfo.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .btn-continue {
+            background-color: #00A650;
+            color: #fff;
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            width: 50%;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+            .btn-continue:hover {
+                background-color: #008f4c;
+            }
+
+        .upload-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .upload-box {
+            width: 400px; /* Wider rectangular box */
+            height: 250px; /* Taller rectangular box */
+            border: 2px dashed #00A650;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            background-color: #eafaf1;
+            transition: background-color 0.3s, border-color 0.3s;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+            .upload-box:hover {
+                background-color: #d2f4dd;
+                border-color: #00A650;
+            }
+
+            .upload-box img {
+                width: 100%; /* Fill the width of the box */
+                height: 100%; /* Fill the height of the box */
+                object-fit: cover; /* Ensure the image covers the entire box */
+                display: none;
+                transition: opacity 0.5s;
+            }
+
+            .upload-box input {
+                opacity: 0;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+            }
+
+            .upload-box span {
+                font-size: 20px;
+                color: #333;
+                transition: color 0.3s;
+            }
+
+            .upload-box img.preview-image {
+                display: block;
+                opacity: 1;
+            }
+
+        h5 {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            font-size: 14px;
+            margin-top: 10px;
+            color: #666;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li class="@(ViewData["ActivePage"] as string == "PersonalInformation" ? "active" : "")">
+                    <div class="step-icon">1</div>
+                    Personal Information
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "NextOfKin" ? "active" : "")">
+                    <div class="step-icon">2</div>
+                    Next of Kin Information
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "Preferences" ? "active" : "")">
+                    <div class="step-icon">3</div>
+                    Preferences
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "ZakatExemption" ? "active" : "")">
+                    <div class="step-icon">4</div>
+                    Zakat Exemption
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "MailingAddress" ? "active" : "")">
+                    <div class="step-icon">5</div>
+                    Mailing Address
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "UploadDocuments" ? "active" : "")">
+                    <div class="step-icon">6</div>
+                    Upload Documents
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "CaptureImage" ? "active" : "")">
+                    <div class="step-icon">6</div>
+                    Capture Image
+                </li>
+                <li class="@(ViewData["ActivePage"] as string == "VerifyEnteredData" ? "active" : "")">
+                    <div class="step-icon">6</div>
+                    Verify Entered Data
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div class="back-button">
+                <a href="#">&#8592; Go Back</a>
+            </div>
+
+            <h1>Upload Required Documents</h1>
+            <h5>Please upload the front and back images of your CNIC</h5>
+
+            <form id="uploadForm" method="post" enctype="multipart/form-data">
+                <div class="upload-container">
+                    <!-- CNIC Front Upload Box -->
+                    <div class="upload-box" id="cnicFrontBox">
+                        <img id="cnicFrontPreview" alt="CNIC Front Preview" />
+                        <span id="cnicFrontText">CNIC Front</span>
+                        <input type="file" id="cnicFront" accept="image/*" onchange="previewImage(event, 'cnicFrontPreview', 'cnicFrontText')" name="CNICFront" />
+                    </div>
+
+                    <!-- CNIC Back Upload Box -->
+                    <div class="upload-box" id="cnicBackBox">
+                        <img id="cnicBackPreview" alt="CNIC Back Preview" />
+                        <span id="cnicBackText">CNIC Back</span>
+                        <input type="file" id="cnicBack" accept="image/*" onchange="previewImage(event, 'cnicBackPreview', 'cnicBackText')" name="CNICBack" />
+                    </div>
+                </div>
+                <div class="upload-container">
+                    <!-- Pay slip Upload Box -->
+                    <div class="upload-box" id="paySlip">
+                        <img id="paySlipPreview" alt="Pay Slip Preview" />
+                        <span id="paySlipText">Pay Slip</span>
+                        <input type="file" id="paySlip" accept="image/*" onchange="previewImage(event, 'paySlipPreview', 'paySlipText')" name="PaySlip" />
+                    </div>
+                </div>
+
+                <br />
+                <button class="btn-continue" type="submit" >Continue</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function to preview the image before upload
+        function previewImage(event, previewId, textId) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById(previewId);
+                var text = document.getElementById(textId);
+                output.src = reader.result;
+                output.classList.add('preview-image');
+                text.style.display = 'none'; // Hide the text when the image is displayed
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        
+    </script>
+
+</body>
+</html>

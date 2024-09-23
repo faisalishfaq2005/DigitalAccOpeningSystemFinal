@@ -1,0 +1,6 @@
+1. separate business logic form razor pages by adding service layers
+2. encrypt important data before saving to database.
+3. make a separate admin dashboard for the bank employee where when he selects a certain application the whole data of that applicant is displayed.
+4. implement ai model
+5. use made up apis to validate user data.
+6. explore asyn , sync methods while storing and retrieving data form databases.
